@@ -65,11 +65,58 @@ what it is, how it works, or what it does.
 
 There are other options available too. The common ones were Anaconda, Miniconda, and Rye.
 
+Still, there are many websites that try to explain how to install and use `pyenv`.
+
+By explain, it feels like someone is walking me through an arithmetic problem using calculus.
+
+For example: <a href="https://realpython.com/intro-to-pyenv/" target="_blank">Real Python: Managing Multiple Python Versions With pyenv</a>
+
+> [!information]
+>
+> GitHub Flavored Markdown does not support creating links that open in new windows or tabs.
+>
+> What year is this?  Do their doctors still use leaches to heal the sick?  Are they afraid
+> that they might break the Netscape Navigator experience?  Or, worse, force someone to upgrade
+> from Internet Explorer 4?
+
+Anyway, this walkthrough is probably too long.  However, it is--mostly--direct and helpful.  
+_At least until it isn't.__
+
+The process of installing and using `pyenv` _can_ be complex **but** it is **not** complicated.
+
+Especially on the Mac.  With Homebrew.
+
+To be fair, there's NO date on that page from Real Python.  (That's more common online than it
+probably should be. hough, that's why this walkthough exists.  Yea, me!)
+
+Still, the list of available versions on the Real Python page stop at 3.7.2.  
+
+It also says that `pyenv` is not supported on Windows.  
+
+Hm?  `pyenv-win 3.1.1` has a release date of July 20th, 2022.
+
+<a href="https://pypi.org/project/pyenv-win/" target="_blank">pyenv-win 3.1.1</a>
+
+Today, the version I installed on my Mac is 3.12.4.  
+
+:man_shrugging:
+
 ### What is Pyenv?
 
-Pyenv is a tool that lets users switch easily between Python versions.
+Pyenv is a tool that lets people switch between Python versions easily.
 
-It also creates a global (machine wide) python virtual environment. (Which addresses PEP 668.)
+It also creates a global (machine-wide) python virtual environment. (Which addresses PEP 668.)
+
+For those people that work alone and never share anything, that's all you need.  
+
+However, `pyenv` can also create individual virtual environments for Python.  And, in the terminal, if
+you navigate into a directory/folder with a virtitual environment, `pyenv` will **_automatically_**
+activate it.  
+
+Python's built-in virtual environment functionality requires virtual environments to be actived
+manually before using them.
+
+Friction prevents adoption.
 
 ### Install Pyenv
 
@@ -332,3 +379,18 @@ pyenv local project-name-env
 >
 > When a venv environment is activated, it changes the current shell's environment
 > to use the virtual environment's Pythonterpreter and packages.
+
+### Updating Existing Virtual Environments
+
+I'm working on a script that will remove/archive/update an existing `pyenv` virtual environment.
+
+It's not quite done.  (Shell scripting is something that I do when I have a need.  Then, I stop.)
+Though, it's close to being done.  I have to test some of the logic. 
+
+I'll upload it to this GitHub repository this week.  (I hope.)
+
+I probably would have had it done today but I spent too much time trying to configure VScode to 
+preview Markdown.  Last week, I used Obsidian for a couple of Markdown projects.  It was _okay_.  
+
+That's that I thought then.  After wading through too many VScode extension and poking at a
+JSON settings file that looks like a can of alphabet soup exploded, Obsidian is looking much better.
