@@ -4,7 +4,7 @@ Created: 2024-07-15
 
 ## The Python Message of Doom
 
-As coders go, I am a hobbiest.
+As Python coders go, I am a hobbiest.
 
 My code automates tasks and--usually/hopefully--does one or two things well.
 
@@ -160,8 +160,6 @@ To make life easier (automation == efficieny), assign it to a shell variable.
 export LATEST_VERSION=$(pyenv install --list | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')
 ```
 
-
-
 ### Install the latest Python version with Pyenv
 
 ```shell
@@ -265,7 +263,12 @@ message sayint it wasn't installed.
 
 ## Create an Auto Update Script
 
-Kidding.  I've already done this for you.
+Kidding.  I've already done this for you.  It uses all the features desribed
+so far to automate the process.
+
+It's in this GitHub repository.  Though, here's a link:
+
+[https://github.com/mysticole928/python/blob/main/MacOS/update-python.sh](https://github.com/mysticole928/python/blob/main/MacOS/update-python.sh)
 
 ## When you NEED a Separate Python Environment
 
