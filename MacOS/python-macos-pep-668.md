@@ -8,7 +8,7 @@ As Python coders go, I am a hobbiest.
 
 My code automates tasks and--usually/hopefully--does one or two things well.
 
-For years, I have enjoyed Homebrew's installation of Python3 because it let me install
+For years, I have enjoyed Homebrew'sstallation of Python3 because it let me install
 and update Python without worrying if I was going to break the OS.
 
 After the most recent MacOS udpate, Python broke.
@@ -118,11 +118,11 @@ python is currently suboptimal.  (Broken.)
 brew uninstall --ignore-dependencies python
 ```
 
-## Use Pyenv to Instsall Python
+## Use Pyenv to Install Python
 
 It's a blessing and a curse that Python has regular update cycles.  
 
-One of Homebrew's **_best features_** is `brew upgrade`.  It did everything for me.
+One of Homebrew's **_best features_** is `brew upgrade`.  It does everything for me.
 
 To install Python using Pyenv, you need to know the version number.
 
@@ -331,4 +331,4 @@ pyenv local project-name-env
 > The command looks like this: `source venv/bin/activate`
 >
 > When a venv environment is activated, it changes the current shell's environment
-> to use the virtual environment's Python interpreter and packages.
+> to use the virtual environment's Pythonterpreter and packages.
