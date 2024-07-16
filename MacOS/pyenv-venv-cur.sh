@@ -1,32 +1,34 @@
 #!/bin/bash
 
-# Date: 2024-07-16
-#
-# DANGER: ALPHA Version
-# This has NOT been FULLY TESTED
-#
-# You have been warned.
-#
-# This script modifies pyenv virtual environments
-#
-# It will...
-#
-## ...check to see if a virtual environment exists and prompt to 
-##    create a new one. 
-##
-## ...update an existing virtual environment.
-##
-## ...remove an existing virtual environment.
-#
-# The update process includes an option to archive the existing settings.
-#
-# When removing/deleteing a virtual environment, the settings are automatically archived.
-
-######
-#
-# pyenv-venv-cur.sh
-#
-#####
+###########################################################
+#                                                         #
+#                      update-pyenv-venv.sh               #
+#                                                         #
+#   This script manages pyenv virtual environments.       #
+#   It can create, update, delete, and archive            #
+#   virtual environments.                                 #
+#                                                         #
+#   Date: 2024-07-16                                      #
+#   Version: 2                                            #
+#                                                         #
+# This script modifies pyenv virtual environments         #
+#                                                         #
+# It...                                                   #
+#                                                         #
+#   ...checks to see if a virtual environment exists and  #
+#      prompts to create a new one                        #
+#                                                         #
+#   ...updates an existing virtual environment            #
+#                                                         #
+#   ...removes an existing virtual environment            #
+#                                                         #
+# The update process includes an option to archive the    #
+# existing settings                                       #
+#                                                         #
+# When removing/deleteing a virtual environment, the      #
+# settings are automatically archived                     #
+#                                                         #
+###########################################################
 
 # Verify that pyenv is installed/initialized
 
