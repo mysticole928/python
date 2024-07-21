@@ -20,7 +20,7 @@
 #                                                         #
 #   ...updates an existing virtual environment            #
 #                                                         #
-#   ...removes an existing virtual environment            #
+#   ...deletes an existing virtual environment            #
 #                                                         #
 # The update process includes an option to archive the    #
 # existing settings                                       #
@@ -56,17 +56,18 @@ if [[ "$continue_script" =~ ^[Nn]$ ]]; then
     exit 0
 fi
 
-# Function to replace spaces with dashes
-# Used when creating default venv names based on current directory name
+# Sanitize name by replacing spaces with dashes
+# Used when creating default venv names.  
+# The default names are are based on the current directory name.
 
-function sanitize_name {
+function replace_spaces {
     echo "$1" | tr ' ' '-'
 }
 
 # Get the current directory name
 
 current_dir=$(basename "$PWD")
-env_name=$(sanitize_name "$current_dir")
+env_name=$(replace_spaces "$current_dir")
 
 # Function that displays a quit message and exits
 # Abort, Retry, Fail...
