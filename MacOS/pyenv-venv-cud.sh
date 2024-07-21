@@ -8,8 +8,11 @@
 #   It can create, update, delete, and archive            #
 #   virtual environments.                                 #
 #                                                         #
-#   Date: 2024-07-16                                      #
-#   Version: 2                                            #
+#   Date: 2024-07-20                                      #
+#   Version: 2.1                                          #
+#   Found a bug where, if the virtual environment was not #
+#   already installed in pyenv, the script would crash.   #
+#   Added a test to check and install if needed.          #
 #                                                         #
 # This script modifies pyenv virtual environments         #
 #                                                         #
@@ -25,7 +28,7 @@
 # The update process includes an option to archive the    #
 # existing settings                                       #
 #                                                         #
-# When removing/deleteing a virtual environment, the      #
+# When removing/deleting a virtual environment, the       #
 # settings are automatically archived                     #
 #                                                         #
 ###########################################################
@@ -57,8 +60,8 @@ if [[ "$continue_script" =~ ^[Nn]$ ]]; then
 fi
 
 # Sanitize name by replacing spaces with dashes
-# Used when creating default venv names.  
-# The default names are are based on the current directory name.
+# Used when creating default venv names.
+# The default names are based on the current directory name.
 
 function replace_spaces {
     echo "$1" | tr ' ' '-'
@@ -78,9 +81,9 @@ quit_gracefully() {
 }
 
 # When an existing pyenv virtual environment exists, the script prompts
-# to save the settings as an archive.  This function defines the default name.
+# to save the settings as an archive. This function defines the default name.
 # It uses the existing virtual environment's name, the python version,
-# and the date.  To add some entropy, the hour and minute from the date
+# and the date. To add some entropy, the hour and minute from the date
 # command are concatenated.
 
 generate_default_archive_name() {
@@ -174,6 +177,17 @@ if [ -f .python-version ]; then
     esac
 fi
 
+# Function to check if a Python version is installed and install it if not
+check_and_install_python_version() {
+    local version=$1
+    if ! pyenv versions --bare | grep -q "^${version}$"; then
+        echo "Python version $version is not installed. Installing..."
+        pyenv install "$version"
+    else
+        echo "Python version $version is already installed."
+    fi
+}
+
 # When a virtual environment does NOT exist, prompt to create one.
 # When a virtual environment DOES exist, prompt to update it
 
@@ -226,6 +240,9 @@ if [ -z "$existing_env" ] || [ "$update_env" == true ]; then
             fi
         done
     fi
+
+    # Check and install the selected Python version if necessary
+    check_and_install_python_version "$selected_version"
 
     # Create or update the virtual environment
     if [ -z "$existing_env" ]; then
