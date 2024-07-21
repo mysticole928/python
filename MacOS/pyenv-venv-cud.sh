@@ -14,6 +14,8 @@
 #   already installed in pyenv, the script would crash.   #
 #   Added a test to check and install if needed.          #
 #                                                         #
+###########################################################
+#                                                         #
 # This script modifies pyenv virtual environments         #
 #                                                         #
 # It...                                                   #
