@@ -2,17 +2,14 @@
 
 ###########################################################
 #                                                         #
-#                      update-pyenv-venv.sh               #
+#                  update-pyenv-cud.sh                    #
 #                                                         #
 #   This script manages pyenv virtual environments.       #
 #   It can create, update, delete, and archive            #
 #   virtual environments.                                 #
 #                                                         #
 #   Date: 2024-07-20                                      #
-#   Version: 2.1                                          #
-#   Found a bug where, if the virtual environment was not #
-#   already installed in pyenv, the script would crash.   #
-#   Added a test to check and install if needed.          #
+#   Version: 2.3                                          #
 #                                                         #
 ###########################################################
 #                                                         #
@@ -93,7 +90,7 @@ generate_default_archive_name() {
     env_name=${env_name// /-} # Replace spaces with dashes
     local version=$2          # Get the virtual environment version number
     local date_str=$(date +%Y-%m-%d-%H%M)
-    echo "${env_name}-${version}-${date_str}.tar.gz"
+    echo "${env_name}${version:+-$version}-${date_str}.tar.gz"
 }
 
 # Function that displays Python versions from Pyenv in columns
@@ -109,7 +106,7 @@ display_versions_in_columns() {
             idx=$((j * rows + i))
             if [ $idx -lt $num_versions ]; then
                 printf "[%2d] %s" $((idx + 1)) "${versions[$idx]}"
-                if [ $j -lt $((columns - 1)) ]; then
+                if [ $j -lt $((columns - 1)); then
                     printf "\t"
                 fi
             fi
@@ -125,15 +122,18 @@ if [ -f .python-version ]; then
     existing_version=$(pyenv version | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$')
     echo "Current pyenv virtual environment: $existing_env"
 
+    archive_created=false
+
     read -p "Backup existing virtual environment settings? (Y/n/quit): " backup_env
     backup_env=${backup_env:-Y} # Make the default == Yes
     case "$backup_env" in
     [Yy]*)
-        default_archive_name=$(generate_default_archive_name "$existing_version")
+        default_archive_name=$(generate_default_archive_name "$existing_env" "$existing_version")
         read -p "Enter the archive name (default: $default_archive_name): " archive_name
         archive_name=${archive_name:-$default_archive_name}
         pyenv virtualenvs >"${archive_name}"
         echo "Settings saved as: $archive_name"
+        archive_created=true
         ;;
     quit)
         quit_gracefully
@@ -148,22 +148,23 @@ if [ -f .python-version ]; then
     read -p "Update or delete existing virtual environment? (update/delete/quit): " action
     case "$action" in
     delete)
-        read -p "Are you sure you want to delete the virtual environment '$existing_env'? (y/N): " confirm_remove
-        if [[ "$confirm_remove" =~ ^[Yy]$ ]]; then
-            # Automatically archive before deleting
-            default_archive_name=$(generate_default_archive_name "$existing_env" "$existing_version")
-            pyenv virtualenvs >"${default_archive_name}"
-            echo "Settings saved as: $default_archive_name"
-
-            # Delete virtual environment
-            pyenv uninstall -f "$existing_env"
-            rm .python-version
-            echo "Virtual environment '$existing_env' removed."
-        else
-            echo "Delete action canceled."
-            echo "Exiting."
-            quit_gracefully
+        if [ "$archive_created" = false ]; then
+            read -p "Are you sure you want to delete the virtual environment '$existing_env'? (y/N): " confirm_remove
+            if [[ "$confirm_remove" =~ ^[Yy]$ ]]; then
+                # Automatically archive before deleting
+                default_archive_name=$(generate_default_archive_name "$existing_env" "$existing_version")
+                pyenv virtualenvs >"${default_archive_name}"
+                echo "Settings saved as: $default_archive_name"
+            else
+                echo "Delete action canceled."
+                echo "Exiting."
+                quit_gracefully
+            fi
         fi
+        # Delete virtual environment
+        pyenv uninstall -f "$existing_env"
+        rm .python-version
+        echo "Virtual environment '$existing_env' removed."
         ;;
     update)
         # Proceed to update the existing virtual environment
