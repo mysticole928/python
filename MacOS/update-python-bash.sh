@@ -3,6 +3,7 @@
 # Date: 2024-07-14
 #
 # Dependencies: Pyenv
+# Shell: bash
 # Arguments: None
 # 
 # This script depends on pyenv for python management.
