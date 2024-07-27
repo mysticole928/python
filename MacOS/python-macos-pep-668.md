@@ -38,9 +38,10 @@ installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.
 ```
 
-> [!IMPORTANT] Am I the punchline of a joke?
->
+> [!IMPORTANT]
+> ## Am I the punchline of a joke?
 > Paraphrasing:
+> 
 > Everything you told me is technically correct and accurate but things are still unclear
 > and I have no clue what steps I need to take.
 >
