@@ -7,7 +7,7 @@
 # 
 # This script depends on pyenv for python management.
 #
-# It will get the latest version number of python andcompares it to
+# It will get the latest version number of python and compares it to
 # the version installed.  
 #
 # If they are different, it will prompt you asking if you want to install
