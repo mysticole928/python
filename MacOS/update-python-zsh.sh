@@ -60,4 +60,8 @@ else
 fi
 
 # Verify the installation
+echo "Built-in Python version (OS):"
 python --version
+
+echo "Current global pyenv version:"
+pyenv version
