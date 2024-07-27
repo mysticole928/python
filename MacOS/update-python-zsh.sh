@@ -60,6 +60,6 @@ else
 fi
 
 # Verify the installation
-echo "Built-in Python version (OS):" /usr/bin/python3 --version
+echo "Built-in Python version (OS): $(/usr/bin/python3 --version)"
 echo
-echo "Current global pyenv version:" pyenv version
+echo "Current global pyenv version: $(pyenv version)"
