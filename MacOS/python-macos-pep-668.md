@@ -1,6 +1,12 @@
 # Python 3, MacOS, Homebrew, and PEP 668
 
 Created: 2024-07-15
+Edited: 2024-08-06
+- Fixed a couple of typos
+- Lamented that some of this should be clearer.  A future version of me will rewrite it.
+- That future version of me will also create a second document that outlines the steps without the rants.
+- The today version of me wants to do it now but there are things that need my attention.
+- Speaking of things... Squirrel! 
 
 ## The Python Message of Doom
 
@@ -38,7 +44,7 @@ installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.
 ```
 
-> [!IMPORTANT]
+> [!NOTE]
 > ## Am I the punchline of a joke?
 > Paraphrasing:
 > 
@@ -72,7 +78,7 @@ By explain, it feels like someone is walking me through an arithmetic problem us
 
 For example: <a href="https://realpython.com/intro-to-pyenv/" target="_blank">Real Python: Managing Multiple Python Versions With pyenv</a>
 
-> [!information]
+> [!WARNING]
 >
 > GitHub Flavored Markdown does not support creating links that open in new windows or tabs.
 >
