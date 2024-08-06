@@ -1,6 +1,7 @@
 # Python 3, MacOS, Homebrew, and PEP 668
 
 Created: 2024-07-15
+
 Edited: 2024-08-06
 - Fixed a couple of typos
 - Lamented that some of this should be clearer.  A future version of me will rewrite it.
