@@ -109,24 +109,27 @@ Today, the version I installed on my Mac is 3.12.4.
 
 :man_shrugging:
 
-### What is Pyenv?
+> [!INFORMATION]
+>
+> **What is Pyenv
+>
+> Pyenv is a tool that lets people switch between Python versions easily.
+> 
+> It also creates a global (machine-wide) python virtual environment.
+> (Which addresses PEP 668.)
+>
+> For those people that work alone and never share anything, that's all you need.
+>
+> However, `pyenv` can also create individual virtual environments for Python.
+> And, in the terminal, if you navigate into a directory/folder with a virtitual environment,
+> `pyenv` will **_automatically_** activate it.
+>
+> This is different than Python's built-in virtual environment functionality.
+> The built-in virtual environments must activated **manually** before using them.
+>
+> Friction prevents adoption.
 
-Pyenv is a tool that lets people switch between Python versions easily.
-
-It also creates a global (machine-wide) python virtual environment. (Which addresses PEP 668.)
-
-For those people that work alone and never share anything, that's all you need.  
-
-However, `pyenv` can also create individual virtual environments for Python.  And, in the terminal, if
-you navigate into a directory/folder with a virtitual environment, `pyenv` will **_automatically_**
-activate it.  
-
-Python's built-in virtual environment functionality requires virtual environments to be actived
-manually before using them.
-
-Friction prevents adoption.
-
-### Install Pyenv
+## Install Pyenv
 
 Start with [Homebrew](https://brew.sh/) and install `pyenv`.
 
@@ -136,8 +139,12 @@ If you're like me, you already have it.  If not, you should get it.
 brew install pyenv
 ```
 
-Once `pyenv` is installed, update your `.zshrc` file to include the path and create
-global virtual environment for python.
+## Update `.zshrc`
+
+This is important!
+
+Once `pyenv` is installed, update the `.zshrc` file to include the local `pyenv` path
+and initialize it.
 
 ```shell
 export PATH="$HOME/.pyenv/bin:$PATH"
@@ -147,17 +154,17 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 ```
 
-### Remove the existing Homebrew Python
+## Remove the existing Homebrew Python
 
-If you're a fan of [Marie Kondo](https://konmari.com/) and her book, _The Life-Changing_
-_Magic of Tidying Up: The Japanese Art of Decluttering and Organizing_, it's time to
-give thanks to Homebrew Python and remove it.
+For fans of [Marie Kondo](https://konmari.com/) and her book, _The Life-Changing_
+_Magic of Tidying Up: The Japanese Art of Decluttering and Organizing_, give
+thanks to Homebrew Python and remove it.
 
 ```shell
 brew uninstall python
 ```
 
-If you have packages that require Python, you might get an error like this:
+When there are installed packages that require Python, there might be an error like this:
 
 ```shell
 Error: Refusing to uninstall /opt/homebrew/Cellar/python@3.12/3.12.4
@@ -166,8 +173,8 @@ You can override this and force removal with:
   brew uninstall --ignore-dependencies python
 ```
 
-This sounds frightening (because it is) but this current implementation of
-python is currently suboptimal.  (Broken.)
+This sounds frightening (_because it is_) but this current implementation of
+python is currently suboptimal.  (Read: It's broken.)
 
 ```shell
 brew uninstall --ignore-dependencies python
@@ -215,7 +222,7 @@ To make life easier (automation == efficieny), assign it to a shell variable.
 export LATEST_VERSION=$(pyenv install --list | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')
 ```
 
-### Install the latest Python version with Pyenv
+## Install the latest Python version with Pyenv
 
 ```shell
 pyenv install $LATEST_VERSION
@@ -244,13 +251,13 @@ python-build: use zlib from xcode sdk
 Installed Python-3.12.4 to /Users/stephen/.pyenv/versions/3.12.4
 ```
 
-### Make the newly installed Python the global default
+## Make the newly installed Python the global default
 
 ```shell
 pyenv global $LATEST_VERSION
 ```
 
-### Trust but verify
+## Trust but verify
 
 ```shell
 python --version
@@ -330,7 +337,7 @@ It's in this GitHub repository.  Though, here's a link:
 There may be times that separate python versions are needed.  Pyenv can manage
 them.  First, install `pyenv-virtualenv` using Homebrew.
 
-### Install `pyenv-virtualenv`
+## Install `pyenv-virtualenv`
 
 ```shell
 brew install pyenv-virtualenv
@@ -350,7 +357,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 ```
 
-### To Create a Python Virtual Environments
+## To Create a Python Virtual Environments
 
 To create a python vitural environment, the command is `pyenv virtualenv`.
 
@@ -388,7 +395,7 @@ pyenv local project-name-env
 > When a venv environment is activated, it changes the current shell's environment
 > to use the virtual environment's Pythonterpreter and packages.
 
-### Updating Existing Virtual Environments
+## Updating Existing Virtual Environments
 
 I'm working on a script that will remove/archive/update an existing `pyenv` virtual environment.
 
