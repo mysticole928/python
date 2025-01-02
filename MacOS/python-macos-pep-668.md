@@ -7,7 +7,9 @@ Edited: 2024-08-06
 - Lamented that some of this should be clearer.  A future version of me will rewrite it.
 - That future version of me will also create a second document that outlines the steps without the rants.
 - The today version of me wants to do it now but there are things that need my attention.
-- Speaking of things... Squirrel! 
+- Speaking of things... Squirrel!
+
+Edited: 2025-01-02 Edited to improve grammar and fix workflow.  (More edits are needed.)
 
 ## The Python Message of Doom
 
@@ -46,13 +48,13 @@ hint: See PEP 668 for the detailed specification.
 ```
 
 > [!NOTE]
-> ## Am I the punchline of a joke?
-> Paraphrasing:
 > 
-> Everything you told me is technically correct and accurate but things are still unclear
+> ## Am I the punchline of a joke?
+> 
+> Paraphrasing the end of that joke: Everything you told me is technically correct and accurate but things are still unclear
 > and I have no clue what steps I need to take.
 >
-> I am still lost.
+> My feeling: I am still lost.
 
 Based on what I've researched, I'm supposed to use a vitual environment, a `venv`.
 
@@ -188,8 +190,7 @@ One of Homebrew's **_best features_** is `brew upgrade`.  It does everything for
 
 To install Python using Pyenv, you need to know the version number.
 
-I've figured out a neat trick to getting the latest version number without having
-to explore the web.
+I've figured out a neat trick to getting the latest version number without having to explore the web.
 
 ### Get the latest Python version using Pyenv
 
@@ -221,6 +222,15 @@ To make life easier (automation == efficieny), assign it to a shell variable.
 ```shell
 export LATEST_VERSION=$(pyenv install --list | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')
 ```
+
+**Trust but verify:**
+
+This is the exact same command as above _and_ it includes validation of the output.
+
+```shell
+export LATEST_VERSION=$(pyenv install --list | grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ') && echo $LATEST_VERSION
+```
+
 
 ## Install the latest Python version with Pyenv
 
