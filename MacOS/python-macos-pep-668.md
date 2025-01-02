@@ -109,9 +109,9 @@ Today, the version I installed on my Mac is 3.12.4.
 
 :man_shrugging:
 
-> [!INFORMATION]
+> [!TIP]
 >
-> **What is Pyenv
+> **What is Pyenv**
 >
 > Pyenv is a tool that lets people switch between Python versions easily.
 > 
