@@ -335,12 +335,18 @@ message sayint it wasn't installed.
 
 ## Create an Auto Update Script
 
-Kidding.  I've already done this for you.  It uses all the features desribed
-so far to automate the process.
+I've already done this for you.  It uses all the features desribed so far to automate the process.
 
 It's in this GitHub repository.  Though, here's a link:
 
-[https://github.com/mysticole928/python/blob/main/MacOS/update-python.sh](https://github.com/mysticole928/python/blob/main/MacOS/update-python.sh)
+### bash
+
+[https://github.com/mysticole928/python/blob/main/MacOS/update-python-bash.sh](https://github.com/mysticole928/python/blob/main/MacOS/update-python-bash.sh)
+
+### zsh
+
+[https://github.com/mysticole928/python/blob/main/MacOS/update-python-zsh.sh](https://github.com/mysticole928/python/blob/main/MacOS/update-python-zsh.sh)
+
 
 ## When you NEED a Separate Python Environment
 
@@ -352,6 +358,8 @@ them.  First, install `pyenv-virtualenv` using Homebrew.
 ```shell
 brew install pyenv-virtualenv
 ```
+
+** This was updated to use `zsh` **
 
 After it's been installed, update the `#Initialize pyenv` section of your `.zshrc` 
 file and add this line: `eval "$(pyenv virtualenv-init -)"`
@@ -379,7 +387,7 @@ pyenv virtualenv 3.10.11 project-name-env  # Replace 3.10.11 with the required P
 pyenv local project-name-env
 ```
 
-> [!information] `pyenv local` vs `venv activate`
+> [!TIP] `pyenv local` vs `venv activate`
 >
 > `pyenv local` and `venv activate` both activate a specific Python environment for a project.
 >
@@ -405,17 +413,3 @@ pyenv local project-name-env
 > When a venv environment is activated, it changes the current shell's environment
 > to use the virtual environment's Pythonterpreter and packages.
 
-## Updating Existing Virtual Environments
-
-I'm working on a script that will remove/archive/update an existing `pyenv` virtual environment.
-
-It's not quite done.  (Shell scripting is something that I do when I have a need.  Then, I stop.)
-Though, it's close to being done.  I have to test some of the logic. 
-
-I'll upload it to this GitHub repository this week.  (I hope.)
-
-I probably would have had it done today but I spent too much time trying to configure VScode to 
-preview Markdown.  Last week, I used Obsidian for a couple of Markdown projects.  It was _okay_.  
-
-That's that I thought then.  After wading through too many VScode extension and poking at a
-JSON settings file that looks like a can of alphabet soup exploded, Obsidian is looking much better.
