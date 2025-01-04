@@ -4,6 +4,20 @@ Updated: 2025-01-04
 
 Tried to update this to make it more readable.
 
+## Warning!
+
+If you've set the environmental variable `CSFLAGS` there's a chance `pyenv` will return an error.  For example, the Harvard CS-50 courseware sets `CSFLAGS` that interfere with the install and update process.
+
+As a workaround (until I can figure out exactly why the error appears) set this first:
+
+```shell
+export CFLAGS="-std=c11"
+```
+
+In the case of the CS-50 courseware, this option is already set.  One of the other ones used causes the problems.
+
+This is true of my update scripts too.
+
 ## The Python Message of Doom
 
 As Python coders go, I am a hobbiest.
