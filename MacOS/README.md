@@ -1,56 +1,35 @@
-# Python Virtual Evironments on MacOS
+# Creating Python Virtual Evironments using MacOS
 
-Date: 2024-07-20
+Updated: 2025-01-04
 
-These scripts create and update Python virtual environments on MacOS
+## Python, Homebrew, and a Mysterious Error
 
-They're designed for hobby-coders.
+In 2024, after upgrading to the latest version of MacOS, I ran a python script and got a new and somewhat cryptic message:
 
-## Python MacOS PEP-668
+```
+error: externally-managed-environment
+```
 
-The file `python-macos-pep-668.md` explains how to manage the update to Homebrew
-related to PEP 668.  For years, an easy way to manage Python 3 on the Mac was
-using Homebrew.  PEP 668 makes virtual environments a requirement but it doesn't 
-explain how to easily manage them.
+### Python 3.11 and PEP-668
 
-## Update Python
+After doing some research, this is because of PEP-668 implemented in Python 3.11. Python Enhancement Proposal (PEP) 668 creates a separation between the global Python environment (typically managed by system package managers like `apt`, `yum`, or `dnf`) and the user context where tools like pip operate. 
 
-The steps to install/update a global Python virtual environment are outlined in the 
-the document `python-macos-pep-668.md`.
+PEP-668 marks environments as "externally managed," to ensure that package management actions in the global context (operating system space) require explicit consent. The goal is to reducethe risk of conflicts between system-level packages and user-installed Python packages.
 
-The script `update-python.sh` automates the process.
+### MacOS and Homebrew Python
 
-## Create, Update, or Delete Python Virtual Environments
+I thought, by using Homebrew, I was working outside of the global context.  It seems that, even though Homebrew python was in user space, it was too close to the OS and considered an externally managed environment.
 
-The shell script `update-python.sh` creates a global Python virtual environment.
+While trying to figure out how to override PEP-668's behavior with Homebrew, it made more sense to follow best practices, remove the Homebrew version of Python, and create virtual environments.
 
-If a separate virtual environment is needed in a specific directory, use the
-shell script `pyenv-venv-cud.sh`.
+That said, the built-in virtual enviroments has always felt cumbersome.  (At least to me.)  After some research, I opted to use **pyenv** to create a "global" virtual environment for my user space.  This keeps my user-space Python updates away from MacOS _and_ I can create additional virtual environments as needed.
 
-It automate a number of tasks.
+## Steps to Install Pyenv, Remove Homebrew Python, and Reinstall
 
-### It can create a new virtual environment
+The steps to install/update a global Python virtual environment are outlined in the the document `pyevn-install.md`.
 
-The script will checkt to see if a virtual environment exists.  
-If **not**, it will prompt to create one.
+## Scripts
 
-It will prompt for a name for the new virtual environment.
-
-A default vitual environment is automatically generated based on the directory name.
-If there are spaces in the name, they are replaced with dashes.
-
-It will prompt for a number of past Python versions to choose from.  The default number is 10.  
-These are presented as a numbered menu.
-
-If a chosen Python version is not currently part of `pyenv`, it is installed.
-
-### If there is a virtual environment
-
-The script checks to see if there is a virtual environment.  If there is, the version can be changed or deleted.
-
-Before doing either, the script prompts to create a backup archive of the settings.
-
-If the environment is deleted, it's settings are automatically archived.  
-
-If you **do not** opt to create an archive when prompted, the script automatically creates one.
-
+- `pyenv-update-python-zsh.sh` - Updates the Global-User version of Python managed by pyenv (zsh version)
+- `pyenv-update-python-bash.sh` - Bash version of the above
+- `pyevn-venv-cud.sh` - Creates pyenv virtual environments with prompts
