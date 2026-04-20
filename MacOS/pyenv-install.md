@@ -227,7 +227,7 @@ Installed Python-3.12.4 to /Users/stephen/.pyenv/versions/3.12.4
 ## Make the newly installed Python the global default
 
 ```shell
-pyenv global $LATEST_VERSION && python --version
+pyenv global $LATEST_VERSION && python3 --version
 ```
 
 **Trust But Verify**
