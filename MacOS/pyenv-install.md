@@ -97,6 +97,8 @@ brew install pyenv
 
 Install `pyenv-virtualenv` to manage virtual environments within pyenv.
 
+It automatally activates when you `cd` into the directory and deactivates it when you leave it.
+
 ```shell
 brew install pyenv-virtualenv
 ```
@@ -278,14 +280,6 @@ Automation improves efficiency and minimizes errors.  Create your own scrips or,
 ### zsh
 
 [https://github.com/mysticole928/python/blob/main/MacOS/update-python-zsh.sh](https://github.com/mysticole928/python/blob/main/MacOS/update-python-zsh.sh)
-
-## Creating Separate Python Virtual Environment
-
-Use Homebrew to install `pyenv-virtualenv`.  This is a plug-in that automatally activates when you cd into the directory and deactivates it when you leave it.
-
-```shell
-brew install pyenv-virtualenv
-```
 
 ## Create Python Virtual Environments
 
