@@ -85,12 +85,20 @@ The process of installing and using `pyenv` _can_ be complex **but** it is **not
 > This is different than Python's built-in virtual environment functionality.  Python's virtual environments must activated **manually** before using them.  (I'm not lazy, I'm energy efficient.)
 >
 
-## Install Pyenv
+## Install pyenv 
 
 There are multiple ways to install `pyenv`.  On the Mac, one of the easist ways is to use [Homebrew](https://brew.sh/)
 
 ```shell
 brew install pyenv
+```
+
+## Install pyenv-virtualenv
+
+Install `pyenv-virtualenv` to manage virtual environments within pyenv.
+
+```shell
+brew install pyenv-virtualenv
 ```
 
 ## Update `.zshrc`
